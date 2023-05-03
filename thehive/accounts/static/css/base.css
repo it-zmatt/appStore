@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+}
+
+nav .Username{
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600; 
+}
+
+nav{
+    display: flex;
+    height: 10vh;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 2.5%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 400; 
+    border-bottom: 1px solid #212529 ; 
+    background-color: #E9ECEF;
+
+}
+
+/* Styling the links in the navbar */
+
+nav .list{
+    display: flex;
+    justify-content: space-around;
+    width: 50vh;
+}
+
+nav a{
+    text-decoration: none;
+    color: #212529;
+}
+
+nav a:hover{
+    color: #D4BC89;
+    text-decoration: underline;
+}
+
+nav .Logout{
+    position: absolute;
+    bottom: 4%;
+    left: 2.5%;
+}
+
+nav .logout a{
+    display: flex;
+    align-items: center;
+}
+
+/* Styliung the Search bar */
+
+.box{
+    position: relative;
+}
+
+.input {
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 2px solid #212529;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #212529;
+    outline: none;
+    transition: .5s;
+}
+.box:hover input{
+    width: 350px;
+    background: #e9ECEF;
+    border-radius: 4px;
+}
+.box i{
+    position: absolute;
+    top: 55%;
+    transform: translate(-50%,-50%);
+    font-size: 26px;
+    color: #212529;
+    transition: .2s;
+}
+.box:hover i{
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Styling content */
+
+.Content{
+    display: block;
+    background-color: #E9ECEF;
+}
+
+.Content .info{
+    display: flex;
+    justify-content: space-around;
+    margin: 5% auto;
+    width: 80%;
+}
+
+.Content .info div{
+    padding-top: 2%;
+    width: 30%;
+    height: 25vh;
+    border: 1px solid #212529;
+    border-radius: 25px;
+    box-shadow: 12px 12px 4px 1px rgba(0, 0, 255, .1);
+}
+
+.Content .Display{
+    display: flex;
+    justify-content: space-around;
+    margin: 5% auto;
+    width: 80%;
+}
+
+.Content .Display div{
+    padding-top: 2%;
+    width: 30%;
+    height: 25vh;
+    border: 1px solid #212529;
+    border-radius: 25px;
+    box-shadow: 12px 12px 4px 1px rgba(0, 0, 255, .1);
+}
+
+/* Styling the content inside each div */
+
+.Content .info a{
+    padding-left: 10%;
+    font-family: 'Yeseva One', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #212529;
+}
+
+.Content .info a:hover{
+    color: #D4BC89;
+    text-decoration: underline;
+}
+
+.Content .Display a{
+    padding-left: 10%;
+    font-family: 'Yeseva One', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #212529;
+}
+
+.Content .Display a:hover{
+    color: #D4BC89;
+    text-decoration: underline;
+}

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -6,88 +7,58 @@
         {% block title %}
         <title>Home</title>
         {% endblock %}
-        <style>
-            *{
-                box-sizing: border-box;
-                padding: 0%;
-                margin: 0%;
-            }
-        </style>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
        
 
     </head>
 
-    <body style="display: flex;
-    justify-content: space-around;
-    
-    ">
-        <nav style="width: 10%;
-        text-align: center;
-        padding-top: 2%;
-        background-color: #e9ecef;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-size: 20px;
-        font-weight: 500;
-        
-        
-        ">
+    <body>
+        <nav>
             <div class="Username">
                 <p>Username</p>
             </div>
-            <div class="nav" style="
-            text-decoration: none;
-            color: #212529;
-            color: #D4BC89;
-            text-decoration: underline;
-            ">
-                <p><a href="">Home</a></p>
-                <p><a href="">Contact</a></p>
-                <p><a href="">About</a></p>
+            <div class="list">
+                <p><a href="#">Home</a></p>
+                <p><a href="#">About</a></p>
+                <p><a href="#">Contact</a></p>
+            </div> 
+            <div class="box">
+                <form name="search">
+                    <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();">
+                </form>
+                <i class="material-icons" style="text-decoration: none;">search</i>   
+                
             </div>
-            <div class="Logout">
-                <p><a href="">Log out</a></p>
+            <div class="logout">
+                
+                <a href="#">
+                    <i class="material-icons">exit_to_app</i>   
+                    <p>Log Out</p>
+                </a>
+                
             </div>
         </nav>
 
-        <div class="Content" style="width: 90%;
-        
-        ">
+        <div class="Content">
         {% block content %}
-            <div class="Searchbar" style="background-color: #D4BC89;
-            padding: 2% 0%;
-            text-align: right;
-            
-            ">
-                <input type="text" name="Searchbar" 
-                style="width: 25%; height: 5vh;
-                border: 1px solid #212529;
-                font-size: 3vh;
-                margin-right: 10%;"
-                > <label for="Searchbar"></label>
-            </div>
-            <div class="Profile">
                 <div class="info">
                     <div class="Name">
-                        <p>Full name:</p>   <p>John Doe</p>
+                        <h1><a href=""  >Full name:</a></h1>   <p>John Doe</p>
                     </div>
                     <div class="Email">
-                        <p>Email:</p>   <p>JohnDoe@example.com</p>
+                        <h1><a href="">Email:</a></h1>   <p>JohnDoe@example.com</p>
                     </div>
                 </div>
                 <div class="Display">
                     <div class="History">
-                        <p>Search History</p>
+                        <h1> <a href="">Search History </a></h1>
                     </div>
                     <div class="Settings">
-                        <p>Settings:</p> <p>Edit your personal information</p>
+                        <h1><a href="">Settings:</a></h1> <p>Edit your personal information</p>
                     </div>
-                </div>
-                
-            </div>
-            
-
-
+                </div>       
         {% endblock %}
         </div>
          
