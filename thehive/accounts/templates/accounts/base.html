@@ -16,8 +16,9 @@
 
     <body>
         <nav>
+            
             <div class="Username">
-                <p>Username</p>
+                <p>{{ user.username }}</p>
             </div>
             <div class="list">
                 <p><a href="#">Home</a></p>
@@ -33,10 +34,13 @@
             </div>
             <div class="logout">
                 
-                <a href="#">
+                <a href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="material-icons">exit_to_app</i>   
                     <p>Log Out</p>
                 </a>
+                <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                    {% csrf_token %}
+                </form>
                 
             </div>
         </nav>
@@ -48,7 +52,7 @@
                         <h1>Full name:</h1>   <p>John Doe</p>
                     </div>
                     <div class="Email">
-                        <h1>Email:</h1>   <p>JohnDoe@example.com</p>
+                        <h1>Email:</h1>   <p>{{ user.email }}</p>
                     </div>
                 </div>
                 <div class="Display">
