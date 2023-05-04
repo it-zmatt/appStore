@@ -93,6 +93,10 @@ nav .logout a{
     z-index: -1;
 }
 
+.material-icons{
+    text-decoration: none;
+}
+
 /* Styling content */
 
 .Content{
