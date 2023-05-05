@@ -7,5 +7,12 @@
 
 {% block content %}
 
-
+<h1>Become a supplier</h1>
+<form class="form-group" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+ 
+  
 {% endblock %}

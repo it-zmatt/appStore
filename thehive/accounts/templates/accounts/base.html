@@ -14,7 +14,7 @@
 
     </head>
 
-    <body>
+    <body style="background-color: #e9ECEF;">
         <nav>
             
             <div class="Username">
@@ -49,7 +49,13 @@
         {% block content %}
                 <div class="info">
                     <div class="Name">
-                        <h1>Full name:</h1>   <p>John Doe</p>
+                        <h1>Full name:</h1><p>
+                            {% if user.profile.first_name and user.profile.last_name %}
+                                {{ user.profile.first_name }} {{ user.profile.last_name }}
+                            {% else %}
+                                no name available
+                            {% endif %}
+                        </p>
                     </div>
                     <div class="Email">
                         <h1>Email:</h1>   <p>{{ user.email }}</p>
@@ -62,7 +68,13 @@
                     <div class="Settings">
                         <h1><a href="">Settings:</a></h1> <p>Edit your personal information</p>
                     </div>
-                </div>       
+                </div> 
+                <div class="supplier" style="text-align: center;">
+                    <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    font-size: 20px;
+                    font-weight: 400;
+                    ">Become a supplier, Click <a style="color: #D4BC89;" href="{% url 'become_supplier' %}">here</a></p>
+                </div>      
         {% endblock %}
         </div>
          
