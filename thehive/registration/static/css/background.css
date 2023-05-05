@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0%;
+}
+
+
+.Hold {
+    position: relative;
+}
+  
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+  
+.foreground {
+    position: relative;
+    z-index: 2;
+}
+
+.background img{
+    width: 100%;
+}
+
+.foreground .getStarted{
+    margin: 2% 0% 1% 12%;
+}
+
+.foreground .getStarted a{
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 10px 40px ;
+    text-align: center;
+    background-color: #D4BC89;
+    border-radius: 18px;
+    width: 200px;
+    border: 1px solid #212529;
+}
+
+.foreground .getStarted a:hover{
+    background-color: #212529;
+    color: #e9ecef;
+    text-decoration: underline;
+
+}
+
+.foreground .login a:hover{
+    color: #e9ecef;
+}
+
+.foreground .login a, .foreground .login p {
+    display: inline-block;
+    margin-top: 7px;
+    padding-left: 7px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.foreground .login a{
+    text-decoration: underline;
+}
+
+
+
+.foreground h1{
+    margin-left: 12%;
+    padding-top: 6%;
+    font-family: 'Yeseva One', cursive;
+    font-size: 90px;
+    font-weight: 500;
+    line-height: 90px;
+}
+
+.foreground p{
+    margin: 2% 0 0 12%;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.foreground a{
+    text-decoration: none;
+    color: #212529;
+}

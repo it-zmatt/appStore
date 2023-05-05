@@ -1,0 +1,27 @@
+.loginForm{
+	width: 35%;
+	margin: 3% auto;
+	background-color: #D4BC89;
+	align-items: center;
+	text-align: center;
+	padding: 10vh 0%;
+	border-radius: 30px;
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 255, .1);
+}
+
+.loginForm button{
+	width: 53%;
+	height: 40px;
+	margin: auto;
+	justify-content: center;
+	
+}
+
+.loginForm h1{
+	font-family: 'Yeseva One', cursive;
+    font-size: 45px;
+    font-weight: 300;
+    margin-bottom: 6%;
+}
+
+

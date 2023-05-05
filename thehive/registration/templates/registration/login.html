@@ -4,16 +4,19 @@
 <title>Login</title>
 {% endblock %}
 
-{% block content %}
 
-<form class="form-group" method="post">
+    {% block content %}
+    <div class="loginForm">
+        <h1>Login:</h1>
+    <form class="form-group" method="post">
 
-    {% csrf_token %}
-    {{form}}
-    <button type="submit" class="btn btn-success">Login</button>
+        {% csrf_token %}
+        {{form.as_p}}
+        <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 12px; margin-top: 7%;
+        font-weight: 300;">Forgot password? Click <a href="">Here</a></p>
+        <button type="submit" class="btn btn-success">Login</button>
 
-</form>
-
-
-
-{% endblock %}
+    </form>
+    </div>
+    {% endblock %}
