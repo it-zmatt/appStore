@@ -1,0 +1,30 @@
+{% extends 'accounts/base.html' %}
+{% block title %}
+
+<title>search</title>
+
+{% endblock %}
+
+{% block content %}
+
+<form method="GET" action="{% url 'search' %}">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+    <ul>
+        {% for result in results %}
+        <li><h2>{{ result.name }}</h2>
+            <img src="{{ result.photo.url }}" alt="{{ result.name }} photo">
+            <p>Price: {{ result.unit_price }} Dzd</p>
+            <p>Min Quantity: {{ result.quantity }} pieces</p>
+            <p>Description: {{ result.description }}</p></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+
+{% endblock %}

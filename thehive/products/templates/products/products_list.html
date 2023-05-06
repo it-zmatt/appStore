@@ -1,0 +1,27 @@
+{% extends 'accounts/base.html' %}
+{% block title %}
+
+<title>My products</title>
+
+{% endblock %}
+
+{% block content %}
+
+        <h1>My products:</h1>
+        {% if products %}
+            <ul>
+            {% for product in products %}
+                <li>
+                <h2>{{ product.name }}</h2>
+                <img src="{{ product.photo.url }}" alt="{{ product.name }} photo">
+                <p>Price: {{ product.unit_price }} Dzd</p>
+                <p>Min Quantity: {{ product.quantity }} pieces</p>
+                <p>Description: {{ product.description }}</p>
+                <a href="{% url 'Edit' product.id %}">Edit</a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No products found.</p>
+        {% endif %}
+{% endblock %}

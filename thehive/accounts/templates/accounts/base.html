@@ -20,17 +20,30 @@
             <div class="Username">
                 <p>{{ user.username }}</p>
             </div>
-            <div class="list">
-                <p><a href="#">Home</a></p>
-                <p><a href="#">About</a></p>
-                <p><a href="#">Contact</a></p>
-            </div> 
+            
+                <div class="list">
+                    <p><a href="{% url 'Profile' %}">Home</a></p>
+                    {% if is_supplier %}
+                    <p><a href="{% url 'Products' %}">My products</a></p>
+                    <p><a href="{% url 'Add' %}">Add a product</a></p>
+                    {% endif %}
+                </div> 
+            
             <div class="box">
-                <form name="search">
-                    <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();">
-                </form>
+                <form method="GET" id="search-form">
+                    {% csrf_token %}
+                    <input type="text" class="input" name="search_query" id="search-input" onmouseout="this.value = ''; this.blur();" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }">
+                    <button type="submit">Search</button>
+                  </form>
                 <i class="material-icons">search</i>   
-                
+               
+                    
+                    
+                    
+                    
+                    
+                    
+                    
             </div>
             <div class="logout">
                 

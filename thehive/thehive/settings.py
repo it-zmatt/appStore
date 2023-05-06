@@ -41,13 +41,14 @@ INSTALLED_APPS = [
     'registration',
     'accounts',
     'supplier',
+    'products',
     
 ]
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

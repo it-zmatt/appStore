@@ -13,7 +13,8 @@ from django.db import transaction
 # Create your views here.
 @login_required
 def profile(request):
-    return render(request, 'accounts/base.html', {'user': request.user})
+    is_supplier = hasattr(request.user.profile, 'supplier')
+    return render(request, 'accounts/base.html', {'user': request.user, 'is_supplier': is_supplier})
 
 def logout_view(request):
     logout(request)
@@ -41,3 +42,4 @@ def become_supplier(request):
     else:
         form = SupplierForm()
     return render(request, 'accounts/supplier.html', {'form': form})
+
