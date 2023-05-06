@@ -1,4 +1,4 @@
-{% extends 'accounts/base.html' %}
+{% extends 'products/products_list.html' %}
 {% block title %}
 
 <title>search</title>
@@ -7,24 +7,29 @@
 
 {% block content %}
 
-<form method="GET" action="{% url 'search' %}">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Search</button>
-</form>
-
+<div class="form__group">
+    <form method="GET" action="{% url 'search' %}">
+        {% csrf_token %}
+        {{ form.search_query }}
+        <label for="{{ form.search_query.id_for_label }}" class="form__label">Search</label>
+        <button type="submit">Search</button>
+    </form>
+    </div>
+<div class="productCart" >
 {% if results %}
     <ul>
         {% for result in results %}
         <li><h2>{{ result.name }}</h2>
             <img src="{{ result.photo.url }}" alt="{{ result.name }} photo">
-            <p>Price: {{ result.unit_price }} Dzd</p>
-            <p>Min Quantity: {{ result.quantity }} pieces</p>
-            <p>Description: {{ result.description }}</p></li>
+            <p><span class="titleBold">Price:</span> &nbsp {{ result.unit_price }} Dzd</p>
+            <p><span class="titleBold">Min Quantity:</span> &nbsp {{ result.quantity }} pieces</p>
+            <p><span class="titleBold">Description:</span> &nbsp {{ result.description }}</p>
+            <a href=""> <p> More info </p></a>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No results found.</p>
 {% endif %}
-
+</div>
 {% endblock %}

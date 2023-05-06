@@ -1,27 +1,72 @@
-{% extends 'accounts/base.html' %}
-{% block title %}
+{% load static %}
 
-<title>My products</title>
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+        <title>My products</title>
+        {% endblock %}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/list.css' %}">
 
-{% endblock %}
 
-{% block content %}
 
-        <h1>My products:</h1>
-        {% if products %}
-            <ul>
-            {% for product in products %}
-                <li>
-                <h2>{{ product.name }}</h2>
-                <img src="{{ product.photo.url }}" alt="{{ product.name }} photo">
-                <p>Price: {{ product.unit_price }} Dzd</p>
-                <p>Min Quantity: {{ product.quantity }} pieces</p>
-                <p>Description: {{ product.description }}</p>
-                <a href="{% url 'Edit' product.id %}">Edit</a>
-                </li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>No products found.</p>
-        {% endif %}
-{% endblock %}
+
+    </head>
+
+    <body>
+
+        <nav>
+            
+            <div class="Username">
+                <p>{{ user.username }}</p>
+            </div>
+            
+            <div class="list">
+                    <p><a href="{% url 'Profile' %}">Home</a></p>
+                    <p><a href="{% url 'Products' %}">My products</a></p>
+                    <p><a href="{% url 'Add' %}">Add a product</a></p>
+            </div> 
+                               
+    
+            <div class="logout">  
+                <a href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="material-icons">exit_to_app</i>   
+                    <p>Log Out</p>
+                </a>
+                <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                    {% csrf_token %}
+                </form>
+            </div>
+        </nav>
+
+        {% block content %}
+        <div class="productCart">
+            <h1>My products:</h1>
+            {% if products %}
+                <ul>
+                {% for product in products %}
+                    <li>
+                    <h2>{{ product.name }}</h2>
+                    <img src="{{ product.photo.url }}" alt="{{ product.name }} photo">
+                    <p><span class="titleBold">Price:</span> &nbsp {{ product.unit_price }} Dzd</p>
+                    <p><span class="titleBold">Min Quantity:</span> &nbsp {{ product.quantity }} pieces</p>
+                    <p><span class="titleBold">Description:</span> &nbsp {{ product.description }}</p>
+                    <a href="{% url 'Edit' product.id %}"> <p> Edit </p></a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No products found.</p>
+            {% endif %}
+        </div>
+        {% endblock %}
+        
+    </body>
+
+
+</html>
+
+
+
+
