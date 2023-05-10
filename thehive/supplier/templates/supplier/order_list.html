@@ -1,0 +1,41 @@
+<h1>Supplier Orders</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Order Date</th>
+                <th>Order status</th>
+                <th>Order status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.customer }}</td>
+                    <td>{{ order.product }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.location }}</td>
+                    <td>{{ order.order_date }}</td>
+                    <td>{% if order.is_sent %}Yes{% else %}No{% endif %}</td>
+                    {% if not order.is_sent %}
+                    <td><form method="post" action="{% url 'mark_as_sent' order.id %}">
+                        {% csrf_token %}
+                        <input type="submit" value="Mark as Sent">
+                    </form></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+    
+    

@@ -59,3 +59,59 @@ def search(request):
         results = Product.objects.filter(name__icontains=search_query)
     
     return render(request, 'products/search_results.html', {'form': form, 'results': results})
+
+
+def search_redirect(request):
+    return redirect('search')
+
+def product_info(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    return render(request, 'products/product_info.html', {'product': product})
+
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from .models import Product, Order
+
+def create_order(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+
+    if request.method == 'POST':
+        quantity = int(request.POST.get('quantity', 0))
+        location = request.POST.get('location', '')
+        address = request.POST.get('address', '')
+
+        if quantity < product.quantity:
+            messages.error(request, f'Please enter a quantity greater than or equal to {product.quantity}.')
+        else:
+            order = Order.objects.create(
+                product=product,
+                customer=request.user,
+                supplier=product.supplier,
+                quantity=quantity,
+                location=location,
+            )
+            print(order)  # print the order object to verify that it's created successfully
+
+            messages.success(request, 'Your order has been placed successfully.')
+
+            # Redirect to the order confirmation page
+            return redirect('MyOrders')
+
+    context = {'product': product}
+    return render(request, 'products/create_order.html', context)
+
+from django.shortcuts import get_object_or_404, redirect
+from django.views.decorators.http import require_POST
+
+@require_POST
+def confirm_received(request, pk):
+    order = get_object_or_404(Order, pk=pk, customer=request.user)
+
+    if order.is_sent:
+        order.is_completed = True
+        order.save()
+        messages.success(request, 'Order confirmed as received.')
+    else:
+        messages.error(request, 'Cannot confirm receipt of order that has not been sent.')
+
+    return redirect('MyOrders')

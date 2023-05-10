@@ -43,3 +43,14 @@ def become_supplier(request):
         form = SupplierForm()
     return render(request, 'accounts/supplier.html', {'form': form})
 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from products.models import Order
+
+@login_required
+def my_orders(request):
+    orders = Order.objects.filter(customer=request.user)
+    context = {'orders': orders}
+    return render(request, 'accounts/my_orders.html', context)
+
+

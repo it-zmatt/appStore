@@ -10,11 +10,14 @@
 <div class="form__group">
     <form method="GET" action="{% url 'search' %}">
         {% csrf_token %}
-        {{ form.search_query }}
-        <label for="{{ form.search_query.id_for_label }}" class="form__label">Search</label>
-        <button type="submit">Search</button>
+        <label for="{{ field.id_for_label }}" class="form__label">Search: </label>
+        {% with form.search_query as field %}
+            {{ field }}
+        {% endwith %}
+        <button type="submit">Search</button> 
     </form>
-    </div>
+</div>
+
 <div class="productCart" >
 {% if results %}
     <ul>
@@ -24,12 +27,49 @@
             <p><span class="titleBold">Price:</span> &nbsp {{ result.unit_price }} Dzd</p>
             <p><span class="titleBold">Min Quantity:</span> &nbsp {{ result.quantity }} pieces</p>
             <p><span class="titleBold">Description:</span> &nbsp {{ result.description }}</p>
-            <a href=""> <p> More info </p></a>
+            <a href="{% url 'Info' result.pk %}"> <p> More info </p></a>
+
         </li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No results found.</p>
+    <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700; text-align: center;">No results found.</p>
 {% endif %}
 </div>
+
+<style>
+    .form__group {
+        width: 45%;
+        margin: 3vh auto;
+        display: block;
+        align-items: center;
+        text-align: center;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+    }
+    .form__group button {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        background-color: #212529;
+        text-align: center;
+        width: 18%;
+        padding: 3px 0;
+        margin-top: 1vh;
+        color: #E9ECEF;
+        border: none;
+    }
+    
+    .form__group button:hover{
+        background-color: #D4BC89;
+        color: #212529;
+        cursor: pointer;
+    }
+    </style>
+
+
+
 {% endblock %}

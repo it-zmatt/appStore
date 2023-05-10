@@ -1,0 +1,28 @@
+{% extends 'products/products_list.html' %}
+
+{% block content %}
+  <h1>{{ product.name }}</h1>
+  <img src="{{ product.photo.url }}" alt="{{ product.name }} photo">
+  <p><span class="titleBold">Price:</span> &nbsp {{ product.unit_price }} Dzd</p>
+  <p><span class="titleBold">Min Quantity:</span> &nbsp {{ product.quantity }} pieces</p>
+  <p><span class="titleBold">Description:</span> &nbsp {{ product.description }}</p>
+
+  <h2>Supplier Information</h2>
+  <p><span class="titleBold">Name:</span> {{ product.supplier.user_profile.first_name }} {{ product.supplier.user_profile.last_name }}</p>
+  <p><span class="titleBold">Phone Number:</span> {{ product.supplier.user_profile.number }}</p>
+  <p><span class="titleBold">Email:</span> {{ product.supplier.user_profile.user.email }}</p>
+  {{ product.supplier.user_profile.user.username }}
+
+  <form method="post" action="{% url 'create_order' product.pk %}">
+    {% csrf_token %}
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" min="{{ product.quantity }}" value="{{ product.quantity }}" required>
+    <label for="location">Your location:</label>
+    <input type="text" id="location" name="location" required>
+    <button type="submit">Purchase</button>
+  </form>
+
+
+
+
+{% endblock %}
