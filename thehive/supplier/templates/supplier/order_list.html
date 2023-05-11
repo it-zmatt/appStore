@@ -4,7 +4,7 @@
 
     <head>
         {% block title %}
-        <title>Home</title>
+        <title>Orders List</title>
         {% endblock %}
         <link rel="stylesheet" href="{% static 'css/supplier.css' %}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -44,7 +44,6 @@
             <table class="fl-table">
                 <thead>
                     <tr>
-                        <th>Order ID</th>
                         <th>Customer</th>
                         <th>Product</th>
                         <th>Quantity</th>
@@ -58,12 +57,11 @@
                 <tbody>
                     {% for order in orders %}
                         <tr>
-                            <td>{{ order.id }}</td>
                             <td>{{ order.customer }}</td>
                             <td>{{ order.product }}</td>
                             <td>{{ order.quantity }}</td>
                             <td>{{ order.location }}</td>
-                            <td>{{ order.order_date }}</td>
+                            <td>{{ order.date_created }}</td>
                             <td>{% if order.is_sent %}Yes{% else %}No{% endif %}</td>
                             {% if not order.is_sent %}
                             <td><form method="post" action="{% url 'mark_as_sent' order.id %}">
@@ -77,12 +75,10 @@
             </table>
         </div>
         {% else %}
-                <p>No products found.</p>
+                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 20px;
+                font-weight: 700; text-align: center;">No products found.</p>
         {% endif %}
-
-        {% for message in messages %}
-            <div class="alert alert-success">{{ message }}</div>
-        {% endfor %}
 
         {% endblock %}
 

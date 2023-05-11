@@ -1,5 +1,9 @@
 {% extends 'accounts/base.html' %}
 
+{% block title %}
+<title>My orders</title>
+{% endblock %}
+
 {% block content %}
     <h1>My Orders:</h1>
     {% if orders %}
@@ -7,11 +11,11 @@
         <table class="fl-table">
             <thead>
                 <tr>
-                    <th>Order Date</th>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Location</th>
-                    <th>Is Completed</th>
+                    <th>Order Date:</th>
+                    <th>Product:</th>
+                    <th>Quantity:</th>
+                    <th>Location:</th>
+                    <th>Is Completed:</th>
                     <th>Confirmation:</th>
 
                 </tr>
@@ -23,21 +27,29 @@
                         <td>{{ order.product.name }}</td>
                         <td>{{ order.quantity }}</td>
                         <td>{{ order.location }}</td>
-                        <td>{{ order.is_completed }}</td>
-                        <td>{% if order.is_sent and not order.is_completed %}
+                        <td>{% if order.is_completed %}
+                            Yes
+                            {% else %}
+                            No
+                            {% endif %}
+                        </td>
+                        {% if order.is_sent and not order.is_completed %}<td>
                             <form method="post" action="{% url 'confirm_received' order.id %}">
                                 {% csrf_token %}
                                 <input type="submit" value="Confirm Received">
                             </form>
+                        </td>
                         {% endif %}
-                    </td>
+                    
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
     {% else %}
-        <p>You have not placed any orders yet.</p>
+        <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        font-weight: 700; text-align: center;">You have not placed any orders yet.</p>
     {% endif %}
     <style>
         h1{
@@ -95,5 +107,19 @@
         .fl-table tr:nth-child(even) {
             background: #e9ECEF;
         }
+        .fl-table input[type="submit"]{
+            width: auto;
+            padding: 1vh 3vh;
+            background-color: #28a745;
+            color: #e9ECEF;
+            border: none;
+        }
+
+        .fl-table input[type="submit"]:hover{
+            cursor: pointer;
+            background-color: #218838;
+
+        }
+        
     </style>
 {% endblock %}

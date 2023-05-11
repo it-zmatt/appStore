@@ -110,3 +110,17 @@ background: #212529;
 .fl-table tr:nth-child(even) {
 background: #e9ECEF;
 }
+
+.fl-table input[type="submit"]{
+    width: auto;
+    padding: 1vh 3vh;
+    background-color: #28a745;
+    color: #e9ECEF;
+    border: none;
+}
+
+.fl-table input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: #218838;
+
+}

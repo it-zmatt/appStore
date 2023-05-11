@@ -50,6 +50,7 @@ def edit_product(request, product_id):
 from django.shortcuts import render
 from products.models import Product
 
+@login_required
 def search(request):
     form = SearchForm(request.GET)
     results = None
@@ -60,10 +61,11 @@ def search(request):
     
     return render(request, 'products/search_results.html', {'form': form, 'results': results})
 
-
+@login_required
 def search_redirect(request):
     return redirect('search')
 
+@login_required
 def product_info(request, product_id):
     product = Product.objects.get(pk=product_id)
     return render(request, 'products/product_info.html', {'product': product})
@@ -72,6 +74,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Product, Order
 
+@login_required
 def create_order(request, pk):
     product = get_object_or_404(Product, pk=pk)
 
