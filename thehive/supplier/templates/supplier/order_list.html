@@ -1,41 +1,91 @@
-<h1>Supplier Orders</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Location</th>
-                <th>Order Date</th>
-                <th>Order status</th>
-                <th>Order status</th>
+{% load static %}
+<!DOCTYPE html>
+<html>
 
-            </tr>
-        </thead>
-        <tbody>
-            {% for order in orders %}
-                <tr>
-                    <td>{{ order.id }}</td>
-                    <td>{{ order.customer }}</td>
-                    <td>{{ order.product }}</td>
-                    <td>{{ order.quantity }}</td>
-                    <td>{{ order.location }}</td>
-                    <td>{{ order.order_date }}</td>
-                    <td>{% if order.is_sent %}Yes{% else %}No{% endif %}</td>
-                    {% if not order.is_sent %}
-                    <td><form method="post" action="{% url 'mark_as_sent' order.id %}">
-                        {% csrf_token %}
-                        <input type="submit" value="Mark as Sent">
-                    </form></td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <head>
+        {% block title %}
+        <title>Home</title>
+        {% endblock %}
+        <link rel="stylesheet" href="{% static 'css/supplier.css' %}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
 
-    {% for message in messages %}
-    <div class="alert alert-success">{{ message }}</div>
-{% endfor %}
+
+
+    <body style="background-color: #e9ECEF;">
+        <nav>
+            <div class="Username">
+                <p>{{ user.username }}</p>
+            </div>
+            
+            <div class="list">
+                    <p><a href="{% url 'Profile' %}">Home</a></p>
+                    <p><a href="{% url 'Products' %}">My products</a></p>
+                    <p><a href="{% url 'Add' %}">Add a product</a></p>
+            </div> 
+                               
     
+            <div class="logout">  
+                <a href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="material-icons">exit_to_app</i>   
+                    <p>Log Out</p>
+                </a>
+                <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                    {% csrf_token %}
+                </form>
+            </div>
+        </nav>
+
+        {% block content %}
+        <h1>Supplier Orders</h1>
+
+        {% if orders %}
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Location</th>
+                        <th>Order Date</th>
+                        <th>Order status</th>
+                        <th>Order status</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.customer }}</td>
+                            <td>{{ order.product }}</td>
+                            <td>{{ order.quantity }}</td>
+                            <td>{{ order.location }}</td>
+                            <td>{{ order.order_date }}</td>
+                            <td>{% if order.is_sent %}Yes{% else %}No{% endif %}</td>
+                            {% if not order.is_sent %}
+                            <td><form method="post" action="{% url 'mark_as_sent' order.id %}">
+                                {% csrf_token %}
+                                <input type="submit" value="Mark as Sent">
+                            </form></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+                <p>No products found.</p>
+        {% endif %}
+
+        {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        {% endblock %}
+
+    </body>
     
+</html>

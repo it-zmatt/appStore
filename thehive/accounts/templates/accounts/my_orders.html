@@ -1,9 +1,10 @@
 {% extends 'accounts/base.html' %}
 
 {% block content %}
-    <h1>My Orders</h1>
+    <h1>My Orders:</h1>
     {% if orders %}
-        <table>
+    <div class="table-wrapper">
+        <table class="fl-table">
             <thead>
                 <tr>
                     <th>Order Date</th>
@@ -34,7 +35,65 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
     {% else %}
         <p>You have not placed any orders yet.</p>
     {% endif %}
+    <style>
+        h1{
+            text-align: center;
+            margin: 4vh 0 7vh;
+            font-size: 45px;
+            text-decoration: underline;
+        }
+
+        .table-wrapper{
+            margin: 10px 70px 70px;
+            box-shadow: 12px 15px 6px 1px rgba(0, 0, 255, .1);
+        }
+        
+        .fl-table {
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: normal;
+            border: none;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 100%;
+            white-space: nowrap;
+            background-color: white;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .fl-table td, .fl-table th {
+            text-align: left;
+            padding:  2vh 4vh;
+        }
+        
+        .fl-table td {
+            border-right: 1px solid #f8f8f8;
+            font-size: 16px;
+            font-weight: 400;
+
+        }
+        
+        .fl-table thead th {
+            color: #e9ECEF;
+            background: #D4BC89;
+            text-decoration: underline;
+
+        }
+        
+        
+        .fl-table thead th:nth-child(odd) {
+            color: #e9ECEF;
+            background: #212529;
+        }
+        
+        .fl-table tr:nth-child(even) {
+            background: #e9ECEF;
+        }
+    </style>
 {% endblock %}

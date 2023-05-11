@@ -1,18 +1,70 @@
 {% extends 'accounts/base.html' %}
-{% block title %}
 
-<title>Supplier Application</title>
+    {% block title %}
+        <title>Supplier Application</title>
+    {% endblock %}
 
-{% endblock %}
+    {% block content %}
 
-{% block content %}
+        <div class="supplierForm">
+            <h1>Become a supplier</h1>
+            <form class="form-group" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+        <style>
 
-<h1>Become a supplier</h1>
-<form class="form-group" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
- 
-  
-{% endblock %}
+button[type="submit"] {
+  background-color: #28a745;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+            
+.supplierForm{
+	width: 35%;
+	margin: 3% auto;
+	background-color: #D4BC89;
+	align-items: center;
+	text-align: center;
+	padding: 10vh 0%;
+	border-radius: 30px;
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 255, .1);
+}
+
+.supplierForm input{
+margin: 1vh;
+}
+
+.supplierForm button{
+	width: 53%;
+	height: 40px;
+	margin: auto;
+	justify-content: center;
+	
+}
+
+.supplierForm h1{
+	font-family: 'Yeseva One', cursive;
+    font-size: 45px;
+    font-weight: 300;
+    margin-bottom: 6%;
+}
+
+
+
+
+        </style>
+    
+    
+    {% endblock %}
