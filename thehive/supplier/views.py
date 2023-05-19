@@ -19,6 +19,7 @@ from django.contrib import messages
 
 from products.models import Order
 
+@login_required
 def mark_as_sent(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     order.is_sent = True

@@ -44,6 +44,7 @@ def become_supplier(request):
         form = SupplierForm()
     return render(request, 'accounts/supplier.html', {'form': form})
 
+@login_required
 def choice(request):
     return render(request, 'accounts/choice.html')
 
