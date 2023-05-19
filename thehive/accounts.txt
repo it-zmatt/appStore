@@ -1,0 +1,11 @@
+super user :
+Admin : Admin 
+
+service providers:
+tech-store : azazazaz
+kitchen-supply : azazazaz
+gym-shark : azazazaz
+gift-store : azazazaz
+
+normal users:
+user :  : azazazaz
