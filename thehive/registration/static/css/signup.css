@@ -1,0 +1,34 @@
+.logiForm{
+	width: 70%;
+    margin: 5vh auto;
+	align-items: center;
+	text-align: left;
+	padding: 3vh 0 3vh 20vh;
+	border: 1px solid #212529;
+    box-shadow: 10px 12px 4px 1px rgba(0, 0, 255, .1);
+
+}
+
+.logiForm ul{
+    display: block;
+    font-size: 14px;
+    text-align: left;
+
+}
+
+.logiForm button{
+	width: 53%;
+	height: 40px;
+	margin: auto;
+	justify-content: center;
+	
+}
+
+.logiForm h1{
+	font-family: 'Yeseva One', cursive;
+    font-size: 45px;
+    font-weight: 300;
+    margin-bottom: 6%;
+}
+
+

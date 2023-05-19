@@ -47,8 +47,8 @@
                 <div class="info">
                     <div class="Name">
                         <h1>Full name:</h1><p>
-                            {% if user.profile.first_name and user.profile.last_name %}
-                                {{ user.profile.first_name }} {{ user.profile.last_name }}
+                            {% if user.first_name and user.last_name %}
+                                {{ user.first_name }} {{ user.last_name }}
                             {% else %}
                                 no name available
                             {% endif %}
@@ -75,14 +75,14 @@
                     </div>
                     {% endif %}
                     <div class="Settings">
-                        <h1><a href="">Settings:</a></h1> <p>Edit your personal information</p>
+                        <h1><a href="{% url 'choice' %}">Settings:</a></h1> <p>Edit your personal information</p>
                     </div>
                 </div>  
-                <div class="supplier" style="text-align: center;">
+                <div class="supplier" style="text-align: center; padding-bottom: 19vh;">
                     <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                     font-size: 20px;
                     font-weight: 400;
-                    ">Become a supplier, Click <a style="color: #D4BC89;" href="{% url 'become_supplier' %}">here</a></p>
+                    ">Become a supplier, Click <a style="color: #D4BC89; " href="{% url 'become_supplier' %}">here</a></p>
                 </div>      
         {% endblock %}
         </div>

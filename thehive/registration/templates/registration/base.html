@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="stylesheet" href="{% static 'css/background.css' %}">
         <link rel="stylesheet" href="{% static 'css/scroll.css' %}">
-        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +26,7 @@
                 <ul>
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">about</a></li>
+                    <li><a href="#scroll">about</a></li>
                   </ul>
             </div> 
         </nav>
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <div class="scroll">
+            <div class="scroll" id="scroll">
                 <h2>Explore more services:</h2>
                 <div class="row1">
                         <div class="column11">

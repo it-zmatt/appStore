@@ -1,0 +1,50 @@
+<!-- accounts/templates/accounts/settings.html -->
+
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<div class="choices">
+    
+        <a href="{% url 'settings' %}"><div class="profile">Update Profile</div></a> <br>    
+        <a href="{% url 'change_password' %}"><div class="password">Update Password</div></a>
+</div>
+<style>
+
+  .choices{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin: 10vh auto;
+  }
+
+  .choices div{
+    width: 55vh;
+  }
+  .choices  a {
+    align-items: center;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    background-color: #D4BC89;
+    box-shadow: 0 5px 0 #212529;
+    color: white;
+    padding: 10vh 5vh;
+    position: relative;
+    text-decoration: none;
+}
+
+.choices a:hover {
+  background-color: #44484c;
+}
+
+.choices a:active {
+  box-shadow: none;
+  top: 5px;
+}
+</style>
+
+
+
+      
+{% endblock %}

@@ -14,9 +14,37 @@
         {{form.as_p}}
         <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-size: 12px; margin-top: 7%;
-        font-weight: 300;">Forgot password? Click <a href="">Here</a></p>
+        font-weight: 300;">New here? <a href="{% url 'register' %}">Signup</a></p>
         <button type="submit" class="btn btn-success">Login</button>
 
     </form>
     </div>
+    <style>
+    .loginForm{
+        width: 35%;
+        margin: 3% auto;
+        align-items: center;
+        text-align: center;
+        padding: 10vh 0%;
+        border: 1px solid #212529;
+        box-shadow: 10px 12px 4px 1px rgba(0, 0, 255, .1);
+    }
+    
+    .loginForm button{
+        width: 53%;
+        height: 40px;
+        margin: auto;
+        justify-content: center;
+        
+    }
+    
+    .loginForm h1{
+        font-family: 'Yeseva One', cursive;
+        font-size: 45px;
+        font-weight: 300;
+        margin-bottom: 6%;
+    }
+    
+    
+    </style>
     {% endblock %}
