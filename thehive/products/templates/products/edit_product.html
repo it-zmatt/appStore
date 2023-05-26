@@ -9,7 +9,7 @@
   {% if user.is_authenticated %}
     <div class="addProduct">
       <h1>Edit Product</h1>
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
         <div class="containsInput">
           {% csrf_token %}
           {{ form.as_p }}
@@ -18,7 +18,7 @@
       </form>
     </div>
   {% else %}
-      <p>You must <a href="{% url 'login' %}">log in</a> to add a product.</p>
+      <p>You must <a href="{% url 'login' %}">log in</a> edit a product.</p>
   {% endif %}
 
   <style>

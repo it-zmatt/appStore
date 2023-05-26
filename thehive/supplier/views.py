@@ -24,5 +24,4 @@ def mark_as_sent(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     order.is_sent = True
     order.save()
-    messages.success(request, 'Order marked as sent.')
     return redirect('Orders')

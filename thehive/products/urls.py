@@ -10,7 +10,6 @@ urlpatterns = [
     path('search-redirect/', views.search_redirect, name='search_redirect'),
     path('/<int:product_id>/info/', views.product_info, name='Info'),
     path('create_order/<int:pk>/', views.create_order, name='create_order'),
-    path('/<int:pk>/confirm_received/', views.confirm_received, name='confirm_received')
-
-
+    path('/<int:pk>/confirm_received/', views.confirm_received, name='confirm_received'),
+    path('delete/<int:product_id>/', views.delete_product, name='Delete'),
 ]

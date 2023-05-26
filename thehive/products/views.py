@@ -26,7 +26,6 @@ def add_product(request):
             user_profile = request.user.profile
             product.supplier = user_profile.supplier
             product.save()
-            messages.success(request, 'Product added successfully.')
             return redirect('Products')
     else:
         form = ProductForm()
@@ -38,7 +37,7 @@ def edit_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
 
     if request.method == 'POST':
-        form = ProductForm(request.POST, instance=product)
+        form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
             return redirect('Products')
@@ -46,6 +45,7 @@ def edit_product(request, product_id):
         form = ProductForm(instance=product)
 
     return render(request, 'products/edit_product.html', {'form': form})
+
 
 from django.shortcuts import render
 from products.models import Product
@@ -95,7 +95,6 @@ def create_order(request, pk):
             )
             print(order)  # print the order object to verify that it's created successfully
 
-            messages.success(request, 'Your order has been placed successfully.')
 
             # Redirect to the order confirmation page
             return redirect('MyOrders')
@@ -113,8 +112,12 @@ def confirm_received(request, pk):
     if order.is_sent:
         order.is_completed = True
         order.save()
-        messages.success(request, 'Order confirmed as received.')
-    else:
-        messages.error(request, 'Cannot confirm receipt of order that has not been sent.')
+    
 
     return redirect('MyOrders')
+
+
+def delete_product(request, product_id):
+    product = Product.objects.get(id=product_id)
+    product.delete()
+    return redirect('Products')

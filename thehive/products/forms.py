@@ -9,6 +9,8 @@ class ProductForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'rows': 5}),
         }
 
+
+
 class SearchForm(forms.Form):
     search_query = forms.CharField(label='Search', max_length=100)
 
