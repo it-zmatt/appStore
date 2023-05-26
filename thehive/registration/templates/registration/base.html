@@ -17,6 +17,63 @@
         <title>Home</title>
         {% endblock %}
 
+        <style>
+        .abbout{
+            display: flex;
+            justify-content: space-around;
+            background-color: #212529;
+            color: #E9ECEF;
+          
+          }
+          
+          .abbout .rightA, .abbout .leftA{
+            width: 45%;
+          }
+
+          .abbout .leftA{
+            padding-top: 10vh;
+          }
+          
+          .abbout img{
+            max-width: 100%;
+          }
+
+          .scroll{
+    
+            width: 90%;
+            margin: 17% auto 5%;}
+
+            .abbout p{
+                padding: 1% 4%;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 18px;
+                font-weight: 300;
+            }
+
+        
+            .abbout ul{
+                display: inline-block;
+                align-items: center;
+                list-style-type: circle;
+            }
+            
+            .abbout ul li {
+                padding: 1% 4%;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+                margin-left: 12%;
+            }
+
+            .abbout h3{
+                font-family: 'Yeseva One', cursive;
+                font-size: 40px;
+                font-weight: 300;
+                margin: 3% 10% 5%;
+                text-decoration: underline;
+            }
+          </style>
+
 
     </head>
 
@@ -47,7 +104,7 @@
                 </div>
             </div>
 
-            <div class="scroll" id="scroll">
+            <div class="scroll" >
                 <h2>Explore more services:</h2>
                 <div class="row1">
                         <div class="column11">
@@ -98,6 +155,31 @@
                         </div>
                     
                 </div>
+            </div>
+
+            <div class="abbout" id="scroll">
+                <div class="rightA">
+                    <img src="{% static '/media/abbout.png' %}" alt="Image 1">
+                </div>
+                <div class="leftA">
+                    <h3>About Us:</h3>
+                    <p>
+                        The Hive is an on-demand service platform that aims to close the gap between customers and service providers / suppliers, offering a convenient and efficient solution for various tasks.
+                    </p>
+                    <p>Our main goals</p>
+                    <ul>
+                        <li>
+                            Enable customers to create accounts and search for specific services or products based on their requirements and preferences.
+                        </li>
+                        <li>
+                            Provide a centralized platform where customers can easily access a wide range of services and products offered by service providers and suppliers.</li>
+                        <li>
+                            Allow service providers and suppliers to create complete profiles, highlighting their expertise, offerings..</li>
+                        <li>
+                            Simplify communication and interaction between customers and service providers, allowing seamless request submissions and responses.</li>
+                    </ul>
+                </div>
+                
             </div>
             
             {% endblock %}

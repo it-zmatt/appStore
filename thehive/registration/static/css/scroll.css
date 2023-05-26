@@ -7,7 +7,7 @@ body{
 .scroll{
     
     width: 90%;
-    margin: 17% auto;}
+    margin: 17% auto 0%;}
 
 .scroll .row1, .scroll .row2{
     display: flex;
